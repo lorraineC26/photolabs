@@ -6,11 +6,9 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  const { photoID, city, country, username, photo, profilePic, setFavPhotos, favPhotos } = props;
+  const { photoID, city, country, username, photo, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal } = props;
 
   const [favStatus, setFav] = useState(false);
-
-  
   const handleClickFav = () => {
     setFav(!favStatus);
 
@@ -28,8 +26,13 @@ const PhotoListItem = (props) => {
     toggleFavPhotos(photoID)
   }
 
+  // side peek click handler
+  const handleClickModal = () => {
+    setModal(!isModalOpen)
+  }
+
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" onClick={handleClickModal}>
 
       <PhotoFavButton  
         handleClickFav={handleClickFav} 
