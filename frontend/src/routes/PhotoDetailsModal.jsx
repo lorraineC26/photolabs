@@ -9,11 +9,6 @@ const PhotoDetailsModal = (props) => {
   const { handClickClose, selectedPhoto, favPhotos, handleClickFav} = props;
 
   const {id, location, similar_photos, urls, user} = selectedPhoto;
- 
-
-  // const handClickClose = () => {
-  //   setModal(false);
-  // };
 
   const similarPhotos  = Object.values(similar_photos)
 

@@ -48,6 +48,7 @@ const useApplicationData = () => {
     setSelectedPhoto(null);
   }
 
+  // open Modal
   const handleClickOpenModal = (photoProps) => {
     setModal(true);
     setSelectedPhoto(photoProps);

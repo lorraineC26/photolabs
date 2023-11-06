@@ -1,19 +1,16 @@
 import React from "react";
-import { useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  // const { photoID, eachPhoto, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto } = props;
   const { photoID, 
           singelPhotoObj, 
           city, 
           country, 
           username, 
           photo, 
-          photoFull, 
           profilePic, 
           handleClickFav, 
           favPhotos, 
@@ -47,13 +44,6 @@ const PhotoListItem = (props) => {
   //       // when the photo has already been marked as fav --> remove it from the fav list
   //       setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
   //   }
-  // }
-
-  // // side peek click handler
-  // const handleClickOpenModal = () => {
-  //   setModal(!isModalOpen)
-
-  //   setSelectedPhoto({photoID, photoFull, profilePic, username, city, country, eachPhoto, handleClickFav})
   // }
 
   return (
