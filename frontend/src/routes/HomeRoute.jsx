@@ -6,10 +6,10 @@ import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = (props) => {
-  const {isModalOpen, setModal, selectedPhoto, setSelectedPhoto} = props;
+  const {isModalOpen, setModal, selectedPhoto, setSelectedPhoto, favPhotos, setFavPhotos} = props;
 
-  // track #fav photos in an array
-  const [favPhotos, setFavPhotos] = useState([]);
+  // // track #fav photos in an array
+  // const [favPhotos, setFavPhotos] = useState([]);
 
   return (
     <div className="home-route">

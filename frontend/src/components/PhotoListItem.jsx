@@ -9,8 +9,8 @@ const PhotoListItem = (props) => {
   const { photoID, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto} = props;
 
   const [favStatus, setFav] = useState(false);
-  const handleClickFav = () => {
-    setFav(!favStatus);
+  const handleClickFav = (photoID) => {
+    setFav((prev) => {return !prev});
 
     // modify favPhotos array when toggling heart
     const toggleFavPhotos = (photoID) => {
@@ -30,7 +30,7 @@ const PhotoListItem = (props) => {
   const handleClickOpenModal = () => {
     setModal(!isModalOpen)
 
-    setSelectedPhoto({photoFull, profilePic, username, city, country, handleClickFav, favStatus, favPhotos})
+    setSelectedPhoto({photoID, photoFull, profilePic, username, city, country, handleClickFav, favStatus})
   }
 
   return (
