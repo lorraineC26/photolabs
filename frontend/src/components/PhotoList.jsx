@@ -6,7 +6,7 @@ import photos from "mocks/photos";
 
 
 const PhotoList = (props) => {
-  const {setFavPhotos, favPhotos, isModalOpen, setModal} = props;
+  const {setFavPhotos, favPhotos, isModalOpen, setModal, selectedPhoto, setSelectedPhoto} = props;
 
   const photosParsed = photos.map((photo)=> {
     return (
@@ -17,11 +17,14 @@ const PhotoList = (props) => {
         country={photo.location.country}
         username={photo.user.name}
         photo={photo.urls.regular}
+        photoFull={photo.urls.full}
         profilePic={photo.user.profile} 
         setFavPhotos={setFavPhotos}
         favPhotos={favPhotos}
         isModalOpen={isModalOpen} 
         setModal={setModal}
+        selectedPhoto={selectedPhoto}
+        setSelectedPhoto={setSelectedPhoto}
       />
     )
   })

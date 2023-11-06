@@ -4,14 +4,15 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
-  const {isModalOpen, setModal} = props;
-  const handClickModalClose = () => {
+  const { setModal, selectedPhoto } = props;
+
+  const handClickClose = () => {
     setModal(false);
   };
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={handClickModalClose}>
+      <button className="photo-details-modal__close-button" onClick={handClickClose}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
     </div>

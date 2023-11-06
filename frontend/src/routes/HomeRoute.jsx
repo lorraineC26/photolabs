@@ -4,10 +4,9 @@ import { useState } from 'react';
 import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
-import PhotoDetailsModal from './PhotoDetailsModal';
 
 const HomeRoute = (props) => {
-  const {isModalOpen, setModal} = props;
+  const {isModalOpen, setModal, selectedPhoto, setSelectedPhoto} = props;
 
   // track #fav photos in an array
   const [favPhotos, setFavPhotos] = useState([]);
@@ -20,6 +19,8 @@ const HomeRoute = (props) => {
         favPhotos={favPhotos}
         isModalOpen={isModalOpen} 
         setModal={setModal}
+        selectedPhoto={selectedPhoto}
+        setSelectedPhoto={setSelectedPhoto}
       />
       
     </div>
