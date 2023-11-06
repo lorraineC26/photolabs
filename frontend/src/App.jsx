@@ -17,7 +17,10 @@ const App = () => {
       />
 
       {isModalOpen && 
-        <PhotoDetailsModal />
+        <PhotoDetailsModal 
+          isModalOpen={isModalOpen}
+          setModal={setModal}
+        />
       }
  
     </div>
