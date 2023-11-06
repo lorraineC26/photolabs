@@ -25,15 +25,6 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <HomeRoute 
-        photos={photos}
-        isModalOpen={isModalOpen} 
-        setModal={setModal}
-        selectedPhoto={selectedPhoto}
-        setSelectedPhoto={setSelectedPhoto}
-        favPhotos={favPhotos}
-        setFavPhotos={setFavPhotos}
-      /> */}
 
       <HomeRoute 
         photos={photos}
