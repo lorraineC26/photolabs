@@ -2,16 +2,16 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
 
 
 const PhotoList = (props) => {
-  const {setFavPhotos, favPhotos, isModalOpen, setModal, selectedPhoto, setSelectedPhoto} = props;
+  const {photos, setFavPhotos, favPhotos, isModalOpen, setModal, selectedPhoto, setSelectedPhoto } = props;
 
   const photosParsed = photos.map((photo)=> {
     return (
       <PhotoListItem 
         key={photo.id}
+        eachPhoto={photo}
         photoID={photo.id}
         city={photo.location.city} 
         country={photo.location.country}

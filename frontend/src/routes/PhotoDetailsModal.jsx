@@ -6,12 +6,14 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { setModal, selectedPhoto, favPhotos, setFavPhotos} = props;
-  const {photoID, photoFull, profilePic, username, city, country, handleClickFav, favStatus} = selectedPhoto;
+  const { setModal, selectedPhoto, favPhotos} = props;
+  const { photoID, photoFull, profilePic, username, city, country, eachPhoto, handleClickFav } = selectedPhoto;
 
   const handClickClose = () => {
     setModal(false);
   };
+
+  const similarPhotos  = Object.values(eachPhoto.similar_photos)
 
   return (
     <div className="photo-details-modal">
@@ -21,8 +23,9 @@ const PhotoDetailsModal = (props) => {
 
       <div className='photo-details-modal__images'>
         <PhotoFavButton  
-          handleClickFav={() => handleClickFav(photoID)} 
-          favStatus={favStatus}
+          handleClickFav={handleClickFav} 
+          favPhotos={favPhotos}
+          photoID={photoID}
         />
 
         <img 
@@ -47,12 +50,11 @@ const PhotoDetailsModal = (props) => {
         </section>
 
         <div className='photo-details-modal__header'>Similar Photos</div>
-        <PhotoList 
-          favPhotos = {favPhotos}
-          handleClickFav={() => handleClickFav(photoID)} 
-          favStatus={favStatus}
-        />
-
+          <PhotoList 
+            photos={similarPhotos}
+            favPhotos = {favPhotos}
+            handleClickFav={handleClickFav}
+          />
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  const { photoID, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto} = props;
+  const { photoID, eachPhoto, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto } = props;
 
   // const [favStatus, setFav] = useState(false);
   // const handleClickFav = (photoID) => {
@@ -40,7 +40,7 @@ const PhotoListItem = (props) => {
   const handleClickOpenModal = () => {
     setModal(!isModalOpen)
 
-    setSelectedPhoto({photoID, photoFull, profilePic, username, city, country, handleClickFav})
+    setSelectedPhoto({photoID, photoFull, profilePic, username, city, country, eachPhoto, handleClickFav})
   }
 
   return (
