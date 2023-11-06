@@ -5,13 +5,15 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const {photos, setFavPhotos, favPhotos, isModalOpen, setModal, selectedPhoto, setSelectedPhoto } = props;
+  // const {photos, setFavPhotos, favPhotos, isModalOpen, setModal, selectedPhoto, setSelectedPhoto } = props;
+
+  const { photos, handleClickFav, favPhotos, handleClickOpenModal } = props;
 
   const photosParsed = photos.map((photo)=> {
     return (
       <PhotoListItem 
         key={photo.id}
-        eachPhoto={photo}
+        singelPhotoObj={photo}
         photoID={photo.id}
         city={photo.location.city} 
         country={photo.location.country}
@@ -19,12 +21,9 @@ const PhotoList = (props) => {
         photo={photo.urls.regular}
         photoFull={photo.urls.full}
         profilePic={photo.user.profile} 
-        setFavPhotos={setFavPhotos}
+        handleClickFav={handleClickFav}
         favPhotos={favPhotos}
-        isModalOpen={isModalOpen} 
-        setModal={setModal}
-        selectedPhoto={selectedPhoto}
-        setSelectedPhoto={setSelectedPhoto}
+        handleClickOpenModal={handleClickOpenModal}
       />
     )
   })

@@ -6,14 +6,16 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { setModal, selectedPhoto, favPhotos} = props;
-  const { photoID, photoFull, profilePic, username, city, country, eachPhoto, handleClickFav } = selectedPhoto;
+  const { handClickClose, selectedPhoto, favPhotos, handleClickFav} = props;
 
-  const handClickClose = () => {
-    setModal(false);
-  };
+  const {id, location, similar_photos, urls, user} = selectedPhoto;
+ 
 
-  const similarPhotos  = Object.values(eachPhoto.similar_photos)
+  // const handClickClose = () => {
+  //   setModal(false);
+  // };
+
+  const similarPhotos  = Object.values(similar_photos)
 
   return (
     <div className="photo-details-modal">
@@ -25,36 +27,36 @@ const PhotoDetailsModal = (props) => {
         <PhotoFavButton  
           handleClickFav={handleClickFav} 
           favPhotos={favPhotos}
-          photoID={photoID}
+          photoID={id}
         />
 
         <img 
           className="photo-details-modal__image" 
-          src={photoFull} 
+          src={urls.full} 
           alt="selected photo" 
         />
 
         <section className='photo-details-modal__photographer-details'>
           <img 
             className="photo-details-modal__photographer-profile" 
-            src={profilePic} 
+            src={user.profile} 
             alt="user's profile pic" 
           />
 
           <div className='photo-details-modal__photographer-info'>
-            {username}
+            {user.name}
             <div className='photo-details-modal__photographer-location'>
-              {city}, {country}
+              {location.city}, {location.country}
             </div>
           </div>
         </section>
 
         <div className='photo-details-modal__header'>Similar Photos</div>
-          <PhotoList 
-            photos={similarPhotos}
-            favPhotos = {favPhotos}
-            handleClickFav={handleClickFav}
-          />
+        <PhotoList 
+          photos={similarPhotos}
+          favPhotos = {favPhotos}
+          handleClickFav={handleClickFav}          
+        />
       </div>
     </div>
   )

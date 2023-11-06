@@ -6,7 +6,20 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  const { photoID, eachPhoto, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto } = props;
+  // const { photoID, eachPhoto, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto } = props;
+  const { photoID, 
+          singelPhotoObj, 
+          city, 
+          country, 
+          username, 
+          photo, 
+          photoFull, 
+          profilePic, 
+          handleClickFav, 
+          favPhotos, 
+          handleClickOpenModal, 
+        } = props;
+
 
   // const [favStatus, setFav] = useState(false);
   // const handleClickFav = (photoID) => {
@@ -26,22 +39,22 @@ const PhotoListItem = (props) => {
   //   toggleFavPhotos(photoID)
   // }
 
-  const handleClickFav = (photoID) => {
-    // when the photo is not fav yet
-    if (! favPhotos.includes(photoID)) {
-        setFavPhotos([...favPhotos, photoID]);
-      } else {
-        // when the photo has already been marked as fav --> remove it from the fav list
-        setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
-    }
-  }
+  // const handleClickFav = (photoID) => {
+  //   // when the photo is not fav yet
+  //   if (! favPhotos.includes(photoID)) {
+  //       setFavPhotos([...favPhotos, photoID]);
+  //     } else {
+  //       // when the photo has already been marked as fav --> remove it from the fav list
+  //       setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
+  //   }
+  // }
 
-  // side peek click handler
-  const handleClickOpenModal = () => {
-    setModal(!isModalOpen)
+  // // side peek click handler
+  // const handleClickOpenModal = () => {
+  //   setModal(!isModalOpen)
 
-    setSelectedPhoto({photoID, photoFull, profilePic, username, city, country, eachPhoto, handleClickFav})
-  }
+  //   setSelectedPhoto({photoID, photoFull, profilePic, username, city, country, eachPhoto, handleClickFav})
+  // }
 
   return (
     <div className="photo-list__item" >
@@ -56,7 +69,7 @@ const PhotoListItem = (props) => {
         className="photo-list__image" 
         src={photo} 
         alt="photo" 
-        onClick={handleClickOpenModal}
+        onClick={() => handleClickOpenModal(singelPhotoObj)}
       />
       
       <section className="photo-list__user-details">
