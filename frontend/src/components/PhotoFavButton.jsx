@@ -4,7 +4,7 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const {handleClickFav, favStatus} = props;
+  const {handleClickFav, photoID, favPhotos} = props;
   // const [fav, setFav] = useState(false);
   
   // const onClickFav = () => {
@@ -12,9 +12,9 @@ function PhotoFavButton(props) {
   // }
 
   return (
-    <div className="photo-list__fav-icon" onClick={handleClickFav}>
+    <div className="photo-list__fav-icon" onClick={() => handleClickFav(photoID)}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={favStatus}/>
+        <FavIcon selected={favPhotos.includes(photoID)}/>
       </div>
     </div>
   );
