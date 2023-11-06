@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  const { photoID, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, selectedPhoto, setSelectedPhoto} = props;
+  const { photoID, city, country, username, photo, photoFull, profilePic, setFavPhotos, favPhotos, isModalOpen, setModal, setSelectedPhoto} = props;
 
   const [favStatus, setFav] = useState(false);
   const handleClickFav = () => {
@@ -16,10 +16,10 @@ const PhotoListItem = (props) => {
     const toggleFavPhotos = (photoID) => {
       // when the photo is not fav yet
       if (! favPhotos.includes(photoID)) {
-        setFavPhotos([...favPhotos, photoID])
+        setFavPhotos([...favPhotos, photoID]);
       // when the photo has already been marked as fav --> remove it from the fav list
       } else {
-        setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID))
+        setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
       }
     }
 
@@ -30,12 +30,11 @@ const PhotoListItem = (props) => {
   const handleClickOpenModal = () => {
     setModal(!isModalOpen)
 
-    setSelectedPhoto({photoID, photoFull})
-
+    setSelectedPhoto({photoFull, profilePic, username, city, country, handleClickFav, favStatus, favPhotos})
   }
 
   return (
-    <div className="photo-list__item" onClick={handleClickOpenModal}>
+    <div className="photo-list__item" >
 
       <PhotoFavButton  
         handleClickFav={handleClickFav} 
@@ -43,9 +42,10 @@ const PhotoListItem = (props) => {
       />
 
       <img 
+        className="photo-list__image" 
         src={photo} 
         alt="photo" 
-        className="photo-list__image" 
+        onClick={handleClickOpenModal}
       />
       
       <section className="photo-list__user-details">
