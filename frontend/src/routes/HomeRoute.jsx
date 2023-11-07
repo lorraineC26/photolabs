@@ -5,11 +5,14 @@ import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = (props) => {
-  const {photos, handleClickOpenModal, favPhotos, handleClickFav} = props;
+  const { photos, topics, handleClickOpenModal, favPhotos, handleClickFav } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation isFavPhotoExist={favPhotos.length}/>
+      <TopNavigation 
+        isFavPhotoExist={favPhotos.length}
+        topics={topics}
+      />
 
       <PhotoList
         photos={photos} 
