@@ -6,7 +6,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { handClickClose, selectedPhoto, favPhotos, handleClickFav} = props;
+  const { handClickClose, selectedPhoto, favPhotos, handleClickFav, handleClickOpenModal} = props;
 
   const {id, location, similar_photos, urls, user} = selectedPhoto;
 
@@ -50,7 +50,7 @@ const PhotoDetailsModal = (props) => {
         <PhotoList 
           photos={similarPhotos}
           favPhotos = {favPhotos}
-          handleClickFav={handleClickFav}          
+          handleClickFav={handleClickFav}         
         />
       </div>
     </div>

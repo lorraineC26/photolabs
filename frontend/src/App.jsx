@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './App.scss';
-import photos from "mocks/photos";
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
@@ -17,7 +16,7 @@ const App = () => {
     handClickClose,
     handleClickOpenModal } = useApplicationData();
   
-  const {isModalOpen, selectedPhoto, favPhotos} = state;
+  const {isModalOpen, selectedPhoto, favPhotos, photos, topics} = state;
 
   return (
     <div className="App">
@@ -35,6 +34,7 @@ const App = () => {
           selectedPhoto={selectedPhoto}
           favPhotos={favPhotos}
           handleClickFav={handleClickFav}
+          handleClickOpenModal={handleClickOpenModal}
         />
       }
  

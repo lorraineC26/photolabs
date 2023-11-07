@@ -1,5 +1,5 @@
-import { useReducer } from "react"
-import { useState } from "react";
+import { useReducer, useEffect } from "react"
+import axios from "axios";
 
 export const ACTIONS = {
   TOGGLE_FAV: 'TOGGLE_FAV',
@@ -23,6 +23,8 @@ function reducer(state, action) {
       return {
         ...state,
         isModalOpen: true,
+        // re-assign to update the value of selectedPhoto; 
+        // the enteir single photo obj passed as photoProps in PhotoListItem.js
         selectedPhoto: action.photoProps
       };
     
@@ -41,7 +43,13 @@ function reducer(state, action) {
           ...state,
           favPhotos: state.favPhotos.filter(favPhotosID => favPhotosID !== photoID)
         }
-      }
+      };
+    
+    case ACTIONS.SET_PHOTO_DATA:
+      return {
+        ...state,
+        photos: action.payload
+      };
       
     default:
       throw new Error(
@@ -53,43 +61,38 @@ function reducer(state, action) {
 const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
-  favPhotos: []
-
+  favPhotos: [],
+  photos:[], //photoData on Compass
+  topicData:[]
 }
 
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // const [isModalOpen, setModal] = useState(false);
-  // const [selectedPhoto, setSelectedPhoto] = useState(null);
-  // const [favPhotos, setFavPhotos] = useState([]);
+  useEffect(() => {
+    axios.get('/api/photos')
+      // extract an array of obj; each obj contain: id, user, urls, location, similar_photos 
+      .then(res => res.data)
+      .then(data => {
+        dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
+      }) 
+  }, []);
 
-  // const state = {isModalOpen, selectedPhoto, favPhotos};
+
 
   // close Modal
   const handClickClose = () => {
-    // setModal(false);
-    // setSelectedPhoto(null);
     dispatch({type: ACTIONS.CLOSE_MODAL});
   }
 
   // open Modal
   const handleClickOpenModal = (photoProps) => {
-    // setModal(true);
-    // setSelectedPhoto(photoProps);
     dispatch({type: ACTIONS.OPEN_MODAL, photoProps});
   }
 
   // toggle fav
   const handleClickFav = (photoID) => {
-    // // when the photo is not fav yet
-    // if (! favPhotos.includes(photoID)) {
-    //     setFavPhotos((prev) => [...prev, photoID]);
-    //   } else {
-    //     // when the photo has already been marked as fav --> remove it from the fav list
-    //     setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
-    // }
     dispatch({type: ACTIONS.TOGGLE_FAV, payload: {photoID}});
   }
 

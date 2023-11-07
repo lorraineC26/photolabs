@@ -18,34 +18,6 @@ const PhotoListItem = (props) => {
         } = props;
 
 
-  // const [favStatus, setFav] = useState(false);
-  // const handleClickFav = (photoID) => {
-  //   setFav((prev) => {return !prev});
-
-  //   // modify favPhotos array when toggling heart
-  //   const toggleFavPhotos = (photoID) => {
-  //     // when the photo is not fav yet
-  //     if (! favPhotos.includes(photoID)) {
-  //       setFavPhotos([...favPhotos, photoID]);
-  //     // when the photo has already been marked as fav --> remove it from the fav list
-  //     } else {
-  //       setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
-  //     }
-  //   }
-
-  //   toggleFavPhotos(photoID)
-  // }
-
-  // const handleClickFav = (photoID) => {
-  //   // when the photo is not fav yet
-  //   if (! favPhotos.includes(photoID)) {
-  //       setFavPhotos([...favPhotos, photoID]);
-  //     } else {
-  //       // when the photo has already been marked as fav --> remove it from the fav list
-  //       setFavPhotos(favPhotos.filter(favPhotosID => favPhotosID !== photoID));
-  //   }
-  // }
-
   return (
     <div className="photo-list__item" >
 
