@@ -50,6 +50,12 @@ function reducer(state, action) {
         ...state,
         photos: action.payload
       };
+    
+    case ACTIONS.SET_TOPIC_DATA:
+      return {
+        ...state,
+        topics: action.payload
+      };
       
     default:
       throw new Error(
@@ -63,7 +69,7 @@ const initialState = {
   selectedPhoto: null,
   favPhotos: [],
   photos:[], //photoData on Compass
-  topicData:[]
+  topics:[] //topicData on Compass
 }
 
 
@@ -76,6 +82,14 @@ const useApplicationData = () => {
       .then(res => res.data)
       .then(data => {
         dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
+      }) 
+  }, []);
+
+  useEffect(() => {
+    axios.get('/api/topics')
+      .then(res => res.data)
+      .then(data => {
+        dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data})
       }) 
   }, []);
 

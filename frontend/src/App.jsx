@@ -4,7 +4,6 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
-import topics from "mocks/topics";
 
 
 // Note: Rendering a single component to build components in isolation
@@ -15,7 +14,7 @@ const App = () => {
     handClickClose,
     handleClickOpenModal } = useApplicationData();
   
-  const { isModalOpen, selectedPhoto, favPhotos, photos } = state;
+  const { isModalOpen, selectedPhoto, favPhotos, photos, topics } = state;
 
   return (
     <div className="App">
