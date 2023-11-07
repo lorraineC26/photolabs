@@ -1,7 +1,12 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+PhotoLabs is a React-based single-page application (SPA) that allows users to view photos in different contexts. It uses a pre-existing API to build a frontend user experience for users to interact with photos!
 
 # Photolabs
+
+## APP Interface
+
+Display All Photos
+![Screenshot of landing page.](https://myoctocat.com/assets/images/base-octocat.svg)
 
 ## Setup
 
@@ -22,3 +27,4 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+##
