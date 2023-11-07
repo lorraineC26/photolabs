@@ -24,15 +24,15 @@ function reducer(state, action) {
       return {
         ...state,
         isModalOpen: true,
-        // re-assign to update the value of selectedPhoto; 
-        // the enteir single photo obj passed as photoProps in PhotoListItem.js
+        // re-assign so can update the value of selectedPhoto; 
+        // the enteir single photo obj will be passed as photoProps in PhotoListItem.js
         selectedPhoto: action.photoProps
       };
     
     case ACTIONS.TOGGLE_FAV:
       const {photoID} = action.payload;
       const isFav = state.favPhotos.includes(photoID);
-      // when the photo is not fav yet
+      // when the photo hasn't been marked as fav yet
       if(!isFav) {
         return {
           ...state,
@@ -75,14 +75,15 @@ const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
   favPhotos: [],
-  photos:[], //photoData on Compass
-  topics:[], //topicData on Compass
+  photos:[], //named photoData on Compass
+  topics:[], //named topicData on Compass
 }
 
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // fetch photo data
   useEffect(() => {
     axios.get('/api/photos')
       // extract an array of obj; each obj contain: id, user, urls, location, similar_photos 
@@ -92,6 +93,7 @@ const useApplicationData = () => {
       }) 
   }, []);
 
+  // fetch topic data
   useEffect(() => {
     axios.get('/api/topics')
       .then(res => res.data)
@@ -101,7 +103,7 @@ const useApplicationData = () => {
   }, []);
 
   const getPhotosByTopics = (topicID) => {
-    // when user does click on a topic, update the photos array to contain only the topic-related photos
+    // only when user click on a topic, then update the photos array to contain only the topic-related photos
     if (topicID) {
       axios.get(`/api/topics/photos/${topicID}`)
         .then(res => res.data)

@@ -36,9 +36,9 @@ const PhotoListItem = (props) => {
       
       <section className="photo-list__user-details">
         <img 
+          className="photo-list__user-profile" 
           src={profilePic} 
           alt="user's profile pic" 
-          className="photo-list__user-profile" 
         />
         <div className="photo-list__user-info">
           {username}
@@ -47,6 +47,7 @@ const PhotoListItem = (props) => {
           </div>
         </div>
       </section>
+      
     </div>
   )
 };

@@ -35,7 +35,6 @@ const App = () => {
           selectedPhoto={selectedPhoto}
           favPhotos={favPhotos}
           handleClickFav={handleClickFav}
-          handleClickOpenModal={handleClickOpenModal}
         />
       }
  

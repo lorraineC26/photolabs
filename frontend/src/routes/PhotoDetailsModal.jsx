@@ -6,10 +6,12 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { handClickClose, selectedPhoto, favPhotos, handleClickFav, handleClickOpenModal} = props;
+  const { handClickClose, selectedPhoto, favPhotos, handleClickFav } = props;
 
   const {id, location, similar_photos, urls, user} = selectedPhoto;
 
+  // convert the similar_photos obj into an array of obj
+  // each obj is a singel photo obj, like the one fetch from api
   const similarPhotos  = Object.values(similar_photos)
 
   return (
@@ -28,7 +30,7 @@ const PhotoDetailsModal = (props) => {
         <img 
           className="photo-details-modal__image" 
           src={urls.full} 
-          alt="selected photo" 
+          alt="selected photo larger size" 
         />
 
         <section className='photo-details-modal__photographer-details'>
