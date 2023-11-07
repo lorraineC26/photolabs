@@ -8,7 +8,8 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-}
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
+};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -56,6 +57,12 @@ function reducer(state, action) {
         ...state,
         topics: action.payload
       };
+
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return {
+        ...state,
+        photos: action.payload
+      };
       
     default:
       throw new Error(
@@ -69,7 +76,7 @@ const initialState = {
   selectedPhoto: null,
   favPhotos: [],
   photos:[], //photoData on Compass
-  topics:[] //topicData on Compass
+  topics:[], //topicData on Compass
 }
 
 
@@ -89,14 +96,24 @@ const useApplicationData = () => {
     axios.get('/api/topics')
       .then(res => res.data)
       .then(data => {
-        dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data})
+        dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data});
       }) 
   }, []);
 
-
+  const getPhotosByTopics = (topicID) => {
+    // when user does click on a topic, update the photos array to contain only the topic-related photos
+    if (topicID) {
+      axios.get(`/api/topics/photos/${topicID}`)
+        .then(res => res.data)
+        .then(data => {
+          dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data});
+        });
+    }
+  }
 
   // close Modal
   const handClickClose = () => {
+    // pass to the reducer fx above as the action param
     dispatch({type: ACTIONS.CLOSE_MODAL});
   }
 
@@ -114,7 +131,8 @@ const useApplicationData = () => {
     state,
     handleClickFav,
     handClickClose,
-    handleClickOpenModal
+    handleClickOpenModal,
+    getPhotosByTopics
   }
 }
 

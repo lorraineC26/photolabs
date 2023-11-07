@@ -12,7 +12,8 @@ const App = () => {
   const { state,
     handleClickFav,
     handClickClose,
-    handleClickOpenModal } = useApplicationData();
+    handleClickOpenModal,
+    getPhotosByTopics } = useApplicationData();
   
   const { isModalOpen, selectedPhoto, favPhotos, photos, topics } = state;
 
@@ -25,6 +26,7 @@ const App = () => {
         handleClickOpenModal={handleClickOpenModal}
         favPhotos={favPhotos}
         handleClickFav={handleClickFav}
+        getPhotosByTopics={getPhotosByTopics}
       />
 
       {isModalOpen && 
