@@ -7,7 +7,7 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 #### ❀ Display all photos 
 ![Screenshot of landing page.](https://github.com/lorraineC26/photolabs/blob/main/doc/all-photos.png?raw=true)
 
-#### ❀ Display only fashion-realted photos; notification is on at the top left corner since user marked some photos as favorite
+#### ❀ Display only fashion-related photos; notification is on at the top left corner since user marked some photos as favorite
 ![Topic-related photos.](https://github.com/lorraineC26/photolabs/blob/main/doc/fashion-photos-notif-on.png?raw=true)
 
 #### ❀ Click on a photo to see the larger version and similar photos

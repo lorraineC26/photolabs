@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
           profilePic, 
           handleClickFav, 
           favPhotos, 
-          handleClickOpenModal, 
+          handleClickOpenModal 
         } = props;
 
 

@@ -10,10 +10,11 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
 
   const { state,
-    handleClickFav,
-    handClickClose,
-    handleClickOpenModal,
-    getPhotosByTopics } = useApplicationData();
+      handleClickFav,
+      handClickClose,
+      handleClickOpenModal,
+      getPhotosByTopics,
+    } = useApplicationData();
   
   const { isModalOpen, selectedPhoto, favPhotos, photos, topics } = state;
 
@@ -35,6 +36,8 @@ const App = () => {
           selectedPhoto={selectedPhoto}
           favPhotos={favPhotos}
           handleClickFav={handleClickFav}
+          handleClickOpenModal={handleClickOpenModal}
+          photos={photos}
         />
       }
  

@@ -6,13 +6,25 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { handClickClose, selectedPhoto, favPhotos, handleClickFav } = props;
+  const { handClickClose, selectedPhoto, favPhotos, handleClickFav, handleClickOpenModal, photos } = props;
 
   const {id, location, similar_photos, urls, user} = selectedPhoto;
 
   // convert the similar_photos obj into an array of obj
   // each obj is a singel photo obj, like the one fetch from api
-  const similarPhotos  = Object.values(similar_photos)
+  const similarPhotos  = Object.values(similar_photos);
+  
+  // Since there's no similar_photots key in const similarPhotos Array -> extrac the photoID first
+  const similarPhotoIDs = similarPhotos.map((simPhotoObj)=>simPhotoObj.id);
+  // -> retrive the complete photo objs which come with similar photos from the original db using photoID
+  const originalSimPhotos = [];
+  for (const photo of photos) {
+    if (similarPhotoIDs.includes(photo.id)) {
+      originalSimPhotos.push(photo);
+    }
+  }
+  
+
 
   return (
     <div className="photo-details-modal">
@@ -50,9 +62,10 @@ const PhotoDetailsModal = (props) => {
 
         <div className='photo-details-modal__header'>Similar Photos</div>
         <PhotoList 
-          photos={similarPhotos}
+          photos={originalSimPhotos}
           favPhotos = {favPhotos}
-          handleClickFav={handleClickFav}         
+          handleClickFav={handleClickFav}
+          handleClickOpenModal={handleClickOpenModal}         
         />
       </div>
     </div>

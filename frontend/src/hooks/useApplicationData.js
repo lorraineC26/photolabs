@@ -6,8 +6,6 @@ export const ACTIONS = {
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SELECT_PHOTO: 'SELECT_PHOTO',
   GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 
@@ -29,6 +27,7 @@ function reducer(state, action) {
         selectedPhoto: action.photoProps
       };
     
+
     case ACTIONS.TOGGLE_FAV:
       const {photoID} = action.payload;
       const isFav = state.favPhotos.includes(photoID);
@@ -135,7 +134,7 @@ const useApplicationData = () => {
     handClickClose,
     handleClickOpenModal,
     getPhotosByTopics
-  }
+  };
 }
 
 export default useApplicationData;
