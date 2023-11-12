@@ -17,12 +17,9 @@ const PhotoDetailsModal = (props) => {
   // Since there's no similar_photots key in const similarPhotos Array -> extrac the photoID first
   const similarPhotoIDs = similarPhotos.map((simPhotoObj)=>simPhotoObj.id);
   // -> retrive the complete photo objs which come with similar photos from the original db using photoID
-  const originalSimPhotos = [];
-  for (const photo of photos) {
-    if (similarPhotoIDs.includes(photo.id)) {
-      originalSimPhotos.push(photo);
-    }
-  }
+  const originalSimPhotos = photos
+    .filter(photo => similarPhotoIDs.includes(photo.id))
+    .map(photo => ({ ...photo }));
   
 
 
